@@ -1,16 +1,36 @@
-# weather_app
+# Weather App
 
-A new Flutter project.
+A simple weather app that displays the temperature based on city. <br>
+API used -> [**Weather API**](https://www.weatherapi.com).
 
-## Getting Started
+## Table of contents
 
-This project is a starting point for a Flutter application.
+- [Weather App](#weather-app)
+  - [Table of contents](#table-of-contents)
+  - [Screenshot](#screenshot)
+  - [Plugins](#plugins)
+  - [Author](#author)
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshot
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+|                                            |                                            |
+| ------------------------------------------ | ------------------------------------------ |
+| <img src="screenshots/01.png" width="300"> | <img src="screenshots/02.png" width="300"> |
+| <img src="screenshots/03.png" width="300"> | <img src="screenshots/04.png" width="300"> |
+| <img src="screenshots/05.png" width="300"> | <img src="screenshots/06.png" width="300"> |
+| <img src="screenshots/07.png" width="300"> | <img src="screenshots/08.png" width="300"> |
+| <img src="screenshots/09.png" width="300"> | <img src="screenshots/10.png" width="300"> |
+| <img src="screenshots/11.png" width="300"> | <img src="screenshots/12.png" width="300"> |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Plugins
+
+| Name                                                          | Usage                            |
+| ------------------------------------------------------------- | -------------------------------- |
+| [**Flutter_Bloc**](https://pub.dev/packages/flutter_bloc)     | State Management                 |
+| [**DIO**](https://pub.dev/packages/dio)                       | Handling API                     |
+| [**Firebase_auth**](https://pub.dev/packages/firebase_auth)   | User Authentication              |
+| [**Google_Sign_In**](https://pub.dev/packages/google_sign_in) | Users Storing and Authentication |
+
+## Author
+
+- Linkedin - [Alyaa Ahmed](https://www.linkedin.com/in/alyaa-ahmed/)
