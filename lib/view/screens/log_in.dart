@@ -104,19 +104,4 @@ class LogIn extends StatelessWidget {
       ),
     );
   }
-
-  InputDecoration test(BuildContext context) {
-    return InputDecoration(
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Theme.of(context).primaryColor,
-        ),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.grey,
-        ),
-      ),
-    );
-  }
 }
