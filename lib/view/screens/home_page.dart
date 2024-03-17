@@ -12,8 +12,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //var cubit = AuthCubit.get(context);
-
     return Scaffold(
       floatingActionButton: ElevatedButton(
         onPressed: () {
@@ -27,9 +25,7 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const SearchPage(),
-                ),
+                MaterialPageRoute(builder: (context) => const SearchPage()),
               );
             },
             icon: const Icon(
