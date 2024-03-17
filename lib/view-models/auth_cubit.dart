@@ -34,7 +34,6 @@ class AuthCubit extends Cubit<AuthStates> {
           .then((value) async {
         emit(SignInSuccessState());
 
-        name = email.split("@")[0];
         clearControllers();
 
         Navigator.pushReplacement(
@@ -64,18 +63,21 @@ class AuthCubit extends Cubit<AuthStates> {
     try {
       _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((user) async {
-        emit(SignUpSuccessState());
+          .then(
+        (user) async {
+          emit(SignUpSuccessState());
 
-        clearControllers();
+          user.user!.updateDisplayName(name);
+          clearControllers();
 
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomePage(),
-          ),
-        );
-      }).catchError((error) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ),
+          );
+        },
+      ).catchError((error) {
         emit(SignUpErrorState());
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(error.toString())),
@@ -92,7 +94,9 @@ class AuthCubit extends Cubit<AuthStates> {
     try {
       signInWithGoogleCredentials().then((value) async {
         emit(GoogleSignInSuccessState());
+
         name = value.user!.displayName!;
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
