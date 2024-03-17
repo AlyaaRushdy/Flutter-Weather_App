@@ -33,9 +33,11 @@ class SearchPage extends StatelessWidget {
             onTapOutside: (PointerDownEvent event) {
               FocusManager.instance.primaryFocus?.unfocus();
             },
+            autofocus: true,
             decoration: InputDecoration(
               hintText: "Enter a City Name",
               labelText: "Search",
+              labelStyle: const TextStyle(color: Colors.blueGrey),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Theme.of(context).primaryColor,
