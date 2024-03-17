@@ -28,9 +28,17 @@ class WeatherDataContainer extends StatelessWidget {
         children: [
           Text(
             weatherModel.cityName,
+            textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 46,
               fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            "local time ${weatherModel.localTime}",
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
             ),
           ),
           Text(
