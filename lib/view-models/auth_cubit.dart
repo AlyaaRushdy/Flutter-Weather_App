@@ -13,10 +13,20 @@ class AuthCubit extends Cubit<AuthStates> {
   static AuthCubit get(context) => BlocProvider.of(context);
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  // Controllers
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordConfirmController = TextEditingController();
+
   late String name, email, password;
 
   void signInWithEmailAndPassword(BuildContext context) {
     emit(SignInLoadingState());
+
+    email = emailController.text;
+    password = passwordController.text;
 
     try {
       _auth
@@ -25,6 +35,7 @@ class AuthCubit extends Cubit<AuthStates> {
         emit(SignInSuccessState());
 
         name = email.split("@")[0];
+        clearControllers();
 
         Navigator.pushReplacement(
           context,
@@ -46,11 +57,18 @@ class AuthCubit extends Cubit<AuthStates> {
   void registerWithEmailAndPassword(BuildContext context) {
     emit(SignUpLoadingState());
 
+    name = "${firstNameController.text} ${lastNameController.text}";
+    email = emailController.text;
+    password = passwordController.text;
+
     try {
       _auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((user) async {
         emit(SignUpSuccessState());
+
+        clearControllers();
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -115,5 +133,13 @@ class AuthCubit extends Cubit<AuthStates> {
     } catch (e) {
       log(e.toString());
     }
+  }
+
+  void clearControllers() {
+    emailController.clear();
+    passwordController.clear();
+    passwordConfirmController.clear();
+    firstNameController.clear();
+    lastNameController.clear();
   }
 }

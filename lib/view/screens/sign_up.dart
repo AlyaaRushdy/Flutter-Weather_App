@@ -10,11 +10,6 @@ import '../widgets/text_form_field_decoration.dart';
 class SignUp extends StatelessWidget {
   SignUp({super.key});
 
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
-  var passwordConfirmController = TextEditingController();
-  var firstNameController = TextEditingController();
-  var lastNameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -50,8 +45,7 @@ class SignUp extends StatelessWidget {
                                   }
                                   return null;
                                 },
-                                controller: firstNameController,
-                                onSaved: (String? value) {},
+                                controller: cubit.firstNameController,
                                 keyboardType: TextInputType.name,
                                 decoration: textFormFieldDecoration(context),
                               ),
@@ -77,8 +71,7 @@ class SignUp extends StatelessWidget {
                                   }
                                   return null;
                                 },
-                                controller: lastNameController,
-                                onSaved: (String? value) {},
+                                controller: cubit.lastNameController,
                                 keyboardType: TextInputType.name,
                                 decoration: textFormFieldDecoration(context),
                               ),
@@ -103,8 +96,7 @@ class SignUp extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: emailController,
-                      onSaved: (String? value) {},
+                      controller: cubit.emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: textFormFieldDecoration(context),
                     ),
@@ -124,8 +116,7 @@ class SignUp extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: passwordController,
-                      onSaved: (String? value) {},
+                      controller: cubit.passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       decoration: textFormFieldDecoration(context),
@@ -143,14 +134,13 @@ class SignUp extends StatelessWidget {
                       validator: (String? value) {
                         if (value!.isEmpty) {
                           return "it must not be empty";
-                        } else if (passwordConfirmController.text !=
-                            passwordController.text) {
+                        } else if (cubit.passwordConfirmController.text !=
+                            cubit.passwordController.text) {
                           return "doesn't match password";
                         }
                         return null;
                       },
-                      onSaved: (String? value) {},
-                      controller: passwordConfirmController,
+                      controller: cubit.passwordConfirmController,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       decoration: textFormFieldDecoration(context),
@@ -165,18 +155,7 @@ class SignUp extends StatelessWidget {
                       onPressed: () {
                         _formKey.currentState!.save();
                         if (_formKey.currentState!.validate()) {
-                          cubit.email = emailController.text;
-                          cubit.password = passwordController.text;
-                          cubit.name =
-                              "${firstNameController.text} ${lastNameController.text}";
-
                           cubit.registerWithEmailAndPassword(context);
-
-                          emailController.clear();
-                          passwordController.clear();
-                          firstNameController.clear();
-                          lastNameController.clear();
-                          passwordConfirmController.clear();
                         }
                       },
                     ),

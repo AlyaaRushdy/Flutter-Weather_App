@@ -10,9 +10,6 @@ import '../widgets/text_form_field_decoration.dart';
 class LogIn extends StatelessWidget {
   LogIn({super.key});
 
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -46,8 +43,7 @@ class LogIn extends StatelessWidget {
                       }
                       return null;
                     },
-                    controller: emailController,
-                    onSaved: (value) {},
+                    controller: cubit.emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: textFormFieldDecoration(context),
                   ),
@@ -67,8 +63,7 @@ class LogIn extends StatelessWidget {
                       }
                       return null;
                     },
-                    controller: passwordController,
-                    onSaved: (String? value) {},
+                    controller: cubit.passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
                     decoration: textFormFieldDecoration(context),
@@ -83,11 +78,7 @@ class LogIn extends StatelessWidget {
                     onPressed: () {
                       _formKey.currentState!.save();
                       if (_formKey.currentState!.validate()) {
-                        cubit.email = emailController.text;
-                        cubit.password = passwordController.text;
                         cubit.signInWithEmailAndPassword(context);
-                        emailController.clear();
-                        passwordController.clear();
                       }
                     },
                   ),
